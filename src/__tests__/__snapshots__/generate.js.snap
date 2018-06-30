@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generate generates expected output: Generates a file with DeleteRecord mutation 1`] = `
+"/* DO NOT EDIT Generated using apollo-flow-components */
+// @flow
+import * as React from \\"react\\";
+import { Mutation } from \\"react-apollo\\";
+import {
+  DeleteRecord
+} from \\"./queries.graphql\\"
+import type {
+  DeleteRecord as DeleteRecordType,
+  DeleteRecordVariables
+} from \\"types\\";
+
+class DeleteRecordMutationClass extends Mutation<DeleteRecordType, DeleteRecordVariables> {};
+
+export const DeleteRecordMutation = (props: $Diff<React.ElementConfig<typeof DeleteRecordMutationClass>, { mutation: any }>) => <DeleteRecordMutationClass mutation={DeleteRecord} {...props} />;"
+`;
+
+exports[`generate generates expected output: Generates a file with GetList query and DeleteItem mutation 1`] = `
+"/* DO NOT EDIT Generated using apollo-flow-components */
+// @flow
+import * as React from \\"react\\";
+import { Query, Mutation } from \\"react-apollo\\";
+import {
+  GetList,
+  DeleteItem
+} from \\"./queries.graphql\\"
+import type {
+  GetList as GetListType,
+  GetListVariables,
+  DeleteItem as DeleteItemType,
+  DeleteItemVariables
+} from \\"types\\";
+
+class GetListQueryClass extends Query<GetListType, GetListVariables> {};
+class DeleteItemMutationClass extends Mutation<DeleteItemType, DeleteItemVariables> {};
+
+export const GetListQuery = (props: $Diff<React.ElementConfig<typeof GetListQueryClass>, { query: any }>) => <GetListQueryClass query={GetList} {...props} />;
+export const DeleteItemMutation = (props: $Diff<React.ElementConfig<typeof DeleteItemMutationClass>, { mutation: any }>) => <DeleteItemMutationClass mutation={DeleteItem} {...props} />;"
+`;
+
+exports[`generate generates expected output: Generates a file with GetRecord query and UpdateRecord mutation 1`] = `
+"/* DO NOT EDIT Generated using apollo-flow-components */
+// @flow
+import * as React from \\"react\\";
+import { Query, Mutation } from \\"react-apollo\\";
+import {
+  GetRecord,
+  UpdateRecord
+} from \\"./queries.graphql\\"
+import type {
+  GetRecord as GetRecordType,
+  GetRecordVariables,
+  UpdateRecord as UpdateRecordType,
+  UpdateRecordVariables
+} from \\"types\\";
+
+class GetRecordQueryClass extends Query<GetRecordType, GetRecordVariables> {};
+class UpdateRecordMutationClass extends Mutation<UpdateRecordType, UpdateRecordVariables> {};
+
+export const GetRecordQuery = (props: $Diff<React.ElementConfig<typeof GetRecordQueryClass>, { query: any }>) => <GetRecordQueryClass query={GetRecord} {...props} />;
+export const UpdateRecordMutation = (props: $Diff<React.ElementConfig<typeof UpdateRecordMutationClass>, { mutation: any }>) => <UpdateRecordMutationClass mutation={UpdateRecord} {...props} />;"
+`;
+
+exports[`generate generates expected output: Generates a file with GetViewer query 1`] = `
+"/* DO NOT EDIT Generated using apollo-flow-components */
+// @flow
+import * as React from \\"react\\";
+import { Query } from \\"react-apollo\\";
+import {
+  GetViewer
+} from \\"./queries.graphql\\"
+import type {
+  GetViewer as GetViewerType
+} from \\"types\\";
+
+class GetViewerQueryClass extends Query<GetViewerType, {}> {};
+
+export const GetViewerQuery = (props: $Diff<React.ElementConfig<typeof GetViewerQueryClass>, { query: any }>) => <GetViewerQueryClass query={GetViewer} {...props} />;"
+`;
