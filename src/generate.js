@@ -101,7 +101,19 @@ const generateCompsFromParsedQueryFile = (
     0,
     filename.length - "queries.graphql".length
   );
-  const outputFilename = `${outputFilePath}ApolloComps.js`;
+
+  let fileExtension;
+  switch (target) {
+    case "flow":
+      fileExtension = "js";
+      break;
+    case "typescript":
+      fileExtension = "tsx";
+      break;
+    default:
+      console.warn(`Invalid target ${target}`);
+  }
+  const outputFilename = `${outputFilePath}ApolloComps.${fileExtension}`;
 
   fs.writeFile(outputFilename, outputFileText, error => {
     if (error) {

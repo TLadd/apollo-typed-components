@@ -179,16 +179,16 @@ describe("generate", () => {
       );
 
       const aCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "src/a/ApolloComps.js"
+        call => call[0] === "src/a/ApolloComps.tsx"
       );
       const bcCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "src/b/c/ApolloComps.js"
+        call => call[0] === "src/b/c/ApolloComps.tsx"
       );
       const dCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "d/ApolloComps.js"
+        call => call[0] === "d/ApolloComps.tsx"
       );
       const fCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "f/ApolloComps.js"
+        call => call[0] === "f/ApolloComps.tsx"
       );
 
       expect(error).toBeNull();
