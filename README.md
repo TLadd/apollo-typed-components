@@ -1,4 +1,4 @@
-# apollo-flow-components
+# apollo-typed-components
 
 Command-line tool to generate ready-to-use [react-apollo](https://github.com/apollographql/react-apollo) flow typed Query and Mutation components. Utilizes type output from [apollo-cli](https://github.com/apollographql/apollo-cli)
 
@@ -7,21 +7,24 @@ Command-line tool to generate ready-to-use [react-apollo](https://github.com/apo
 # Use apollo-cli to get schema definition from graphql server
 $ apollo schema:download --endpoint=http://localhost:3001/graphql schema.json
 
-# Generate flow types from queries.graphql files
-$ apollo codegen:generate --addTypename --schema=schema.json --target=flow src/types.js
+# Generate typescript or flow types from queries.graphql files
+$ apollo codegen:generate --schema=schema.json --target=flow --outputFlat src/types.js
+$ apollo codegen:generate --schema=schema.json --target=typescript --outputFlat src/types.ts
 
-# Generate components utilizing generated flow types
-$ apollo-flow-components
+# Generate components utilizing generated typescript or flow types
+$ apollo-typed-components --target=flow
+$ apollo-typed-components --target=typescript
 ```
 
-A corresponding ApolloComps.js file will be generated next to each queries.graphql file, with one Query/Mutation component export for each operation defined in queries.graphql. The components automatically will have type-safety with the generated types and also will automatically pass down the query/mutation DocumentNode.
+A corresponding ApolloComps.(tsx, js) file will be generated next to each queries.graphql file, with one Query/Mutation component export for each operation defined in queries.graphql. The components automatically will have type-safety with the generated types and also will automatically pass down the query/mutation DocumentNode.
 
 ## Assumptions
 The generated files make some assumptions about how the consuming project is structured.
 * query and mutation operations are defined in queries.graphql files
 * The types generated from apollo-cli are accessible via `import type { ... } from "types"`. To allow this:
-  * `module.system.node.resolve_dirname=./src` in .flowconfig options
-  * output generated types to `src/types/apolloTypes.js`, and then re-export them out of `src/types/index.js` using `export type *`
+  * `module.system.node.resolve_dirname=./src` in .flowconfig options for flow
+  * for typescript `{ "baseUrl": "src" }` in tsconfig.json
+  * output generated types to `src/types/apolloTypes.(js, tsx)`, and then re-export them out of `src/types/index.js` using `export (type) *`
 
 ## Example Output
 Given a queries.graphql file:
