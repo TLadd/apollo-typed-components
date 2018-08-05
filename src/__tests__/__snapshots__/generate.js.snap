@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generate generates expected output: Generates a file with DeleteRecord mutation 1`] = `
-"/* DO NOT EDIT Generated using apollo-flow-components */
+exports[`generate generates expected output for flow: Generates a file with DeleteRecord mutation 1`] = `
+"/* Generated using apollo-typed-components */
 // @flow
 import * as React from \\"react\\";
 import { Mutation } from \\"react-apollo\\";
@@ -18,8 +18,8 @@ class DeleteRecordMutationClass extends Mutation<DeleteRecordType, DeleteRecordV
 export const DeleteRecordMutation = (props: $Diff<React.ElementConfig<typeof DeleteRecordMutationClass>, { mutation: any }>) => <DeleteRecordMutationClass mutation={DeleteRecord} {...props} />;"
 `;
 
-exports[`generate generates expected output: Generates a file with GetList query and DeleteItem mutation 1`] = `
-"/* DO NOT EDIT Generated using apollo-flow-components */
+exports[`generate generates expected output for flow: Generates a file with GetList query and DeleteItem mutation 1`] = `
+"/* Generated using apollo-typed-components */
 // @flow
 import * as React from \\"react\\";
 import { Query, Mutation } from \\"react-apollo\\";
@@ -41,8 +41,8 @@ export const GetListQuery = (props: $Diff<React.ElementConfig<typeof GetListQuer
 export const DeleteItemMutation = (props: $Diff<React.ElementConfig<typeof DeleteItemMutationClass>, { mutation: any }>) => <DeleteItemMutationClass mutation={DeleteItem} {...props} />;"
 `;
 
-exports[`generate generates expected output: Generates a file with GetRecord query and UpdateRecord mutation 1`] = `
-"/* DO NOT EDIT Generated using apollo-flow-components */
+exports[`generate generates expected output for flow: Generates a file with GetRecord query and UpdateRecord mutation 1`] = `
+"/* Generated using apollo-typed-components */
 // @flow
 import * as React from \\"react\\";
 import { Query, Mutation } from \\"react-apollo\\";
@@ -64,8 +64,8 @@ export const GetRecordQuery = (props: $Diff<React.ElementConfig<typeof GetRecord
 export const UpdateRecordMutation = (props: $Diff<React.ElementConfig<typeof UpdateRecordMutationClass>, { mutation: any }>) => <UpdateRecordMutationClass mutation={UpdateRecord} {...props} />;"
 `;
 
-exports[`generate generates expected output: Generates a file with GetViewer query 1`] = `
-"/* DO NOT EDIT Generated using apollo-flow-components */
+exports[`generate generates expected output for flow: Generates a file with GetViewer query 1`] = `
+"/* Generated using apollo-typed-components */
 // @flow
 import * as React from \\"react\\";
 import { Query } from \\"react-apollo\\";
@@ -79,4 +79,93 @@ import type {
 class GetViewerQueryClass extends Query<GetViewerType, {}> {};
 
 export const GetViewerQuery = (props: $Diff<React.ElementConfig<typeof GetViewerQueryClass>, { query: any }>) => <GetViewerQueryClass query={GetViewer} {...props} />;"
+`;
+
+exports[`generate generates expected output for typescript: Generates a file with DeleteRecord mutation 1`] = `
+"/* Generated using apollo-typed-components */
+import * as React from \\"react\\";
+import { Mutation } from \\"react-apollo\\";
+import {
+  DeleteRecord
+} from \\"./queries.graphql\\"
+import {
+  DeleteRecord as DeleteRecordType,
+  DeleteRecordVariables
+} from \\"types\\";
+
+type GetComponentProps<T> = T extends React.Component<infer P> ? P : never;
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
+
+class DeleteRecordMutationClass extends Mutation<DeleteRecordType, DeleteRecordVariables> {};
+
+export const DeleteRecordMutation = (props: Omit<GetComponentProps<DeleteRecordMutationClass>, \\"mutation\\">) => <DeleteRecordMutationClass mutation={DeleteRecord} {...props} />;"
+`;
+
+exports[`generate generates expected output for typescript: Generates a file with GetList query and DeleteItem mutation 1`] = `
+"/* Generated using apollo-typed-components */
+import * as React from \\"react\\";
+import { Query, Mutation } from \\"react-apollo\\";
+import {
+  GetList,
+  DeleteItem
+} from \\"./queries.graphql\\"
+import {
+  GetList as GetListType,
+  GetListVariables,
+  DeleteItem as DeleteItemType,
+  DeleteItemVariables
+} from \\"types\\";
+
+type GetComponentProps<T> = T extends React.Component<infer P> ? P : never;
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
+
+class GetListQueryClass extends Query<GetListType, GetListVariables> {};
+class DeleteItemMutationClass extends Mutation<DeleteItemType, DeleteItemVariables> {};
+
+export const GetListQuery = (props: Omit<GetComponentProps<GetListQueryClass>, \\"query\\">) => <GetListQueryClass query={GetList} {...props} />;
+export const DeleteItemMutation = (props: Omit<GetComponentProps<DeleteItemMutationClass>, \\"mutation\\">) => <DeleteItemMutationClass mutation={DeleteItem} {...props} />;"
+`;
+
+exports[`generate generates expected output for typescript: Generates a file with GetRecord query and UpdateRecord mutation 1`] = `
+"/* Generated using apollo-typed-components */
+import * as React from \\"react\\";
+import { Query, Mutation } from \\"react-apollo\\";
+import {
+  GetRecord,
+  UpdateRecord
+} from \\"./queries.graphql\\"
+import {
+  GetRecord as GetRecordType,
+  GetRecordVariables,
+  UpdateRecord as UpdateRecordType,
+  UpdateRecordVariables
+} from \\"types\\";
+
+type GetComponentProps<T> = T extends React.Component<infer P> ? P : never;
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
+
+class GetRecordQueryClass extends Query<GetRecordType, GetRecordVariables> {};
+class UpdateRecordMutationClass extends Mutation<UpdateRecordType, UpdateRecordVariables> {};
+
+export const GetRecordQuery = (props: Omit<GetComponentProps<GetRecordQueryClass>, \\"query\\">) => <GetRecordQueryClass query={GetRecord} {...props} />;
+export const UpdateRecordMutation = (props: Omit<GetComponentProps<UpdateRecordMutationClass>, \\"mutation\\">) => <UpdateRecordMutationClass mutation={UpdateRecord} {...props} />;"
+`;
+
+exports[`generate generates expected output for typescript: Generates a file with GetViewer query 1`] = `
+"/* Generated using apollo-typed-components */
+import * as React from \\"react\\";
+import { Query } from \\"react-apollo\\";
+import {
+  GetViewer
+} from \\"./queries.graphql\\"
+import {
+  GetViewer as GetViewerType
+} from \\"types\\";
+
+type GetComponentProps<T> = T extends React.Component<infer P> ? P : never;
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
+
+class GetViewerQueryClass extends Query<GetViewerType, {}> {};
+
+export const GetViewerQuery = (props: Omit<GetComponentProps<GetViewerQueryClass>, \\"query\\">) => <GetViewerQueryClass query={GetViewer} {...props} />;"
 `;

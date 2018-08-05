@@ -2,12 +2,15 @@ const fs = require("fs");
 const glob = require("glob");
 const gql = require("graphql-tag").default;
 const async = require("async");
+const { flowTemplate, typescriptTemplate } = require("./templates");
 
 /**
  * Find every queries.graphql file and generate a corresponding components file next to it
  * with Query and Mutation components for each operation using generated type from apollo-cli
  */
-const generate = callback => {
+const generate = (options, callback) => {
+  const { target } = options;
+
   glob(
     "**/queries.graphql",
     {
@@ -29,7 +32,8 @@ const generate = callback => {
             generateCompsFromParsedQueryFile(
               {
                 filename,
-                parsedData: gql(data)
+                parsedData: gql(data),
+                target
               },
               cb
             );
@@ -44,10 +48,12 @@ const generate = callback => {
 /**
  * Writes a file with generated react-apollo Query and Mutation components
  * based on the parsedData input
+ * @param {queries.graphql filename} filename
  * @param {graphql AST output from gql} parsedData
+ * @param {flow or typescript} target
  */
 const generateCompsFromParsedQueryFile = (
-  { filename, parsedData },
+  { filename, parsedData, target },
   callback
 ) => {
   const operations = parsedData.definitions
@@ -79,7 +85,17 @@ const generateCompsFromParsedQueryFile = (
     return callback();
   }
 
-  const outputFileText = fileTemplate({ operations });
+  let outputFileText;
+  switch (target) {
+    case "flow":
+      outputFileText = flowTemplate({ operations });
+      break;
+    case "typescript":
+      outputFileText = typescriptTemplate({ operations });
+      break;
+    default:
+      console.warn(`Invalid target ${target}`);
+  }
 
   const outputFilePath = filename.substring(
     0,
