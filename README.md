@@ -52,7 +52,7 @@ mutation DeleteItem($input: DeleteItemInput!) {
 
 apollo-flow-components will generate this ApolloComps.js file in the same directory:
 ```javascript
-/* DO NOT EDIT Generated using apollo-flow-components */
+/* DO NOT EDIT Generated using apollo-typed-components */
 // @flow
 import * as React from "react";
 import { Query, Mutation } from "react-apollo";
