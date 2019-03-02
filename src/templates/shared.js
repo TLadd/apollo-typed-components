@@ -1,7 +1,7 @@
 /**
  * Returns a string that declares a react-apollo Query or Mutation component with types
  * @param {The query or mutation operation name} name
- * @param {Query or Mutation} type
+ * @param {Query, Mutation or Subscription} type
  * @param {Boolean whether the operation takes in variables or not} hasVars
  */
 const operationClassTemplate = ({ name, type, hasVars }) => {
@@ -21,26 +21,33 @@ const getOperationClassDeclarations = ({ operations }) => {
 /**
  * Returns the components from react-apollo that need to be imported
  * @param {The query or mutation operation name} name
- * @param {Query or Mutation} type
+ * @param {Query, Mutation or Subscription} type
  * @param {Boolean whether the operation takes in variables or not} hasVars
  */
 const getReactApolloImports = ({ operations }) => {
   const hasQueries = operations.some(op => op.type === "Query");
   const hasMutations = operations.some(op => op.type === "Mutation");
+  const hasSuscriptions = operations.some(op => op.type === "Subscription");
 
-  if (hasQueries && hasMutations) {
-    return "Query, Mutation";
-  } else if (hasQueries) {
-    return "Query";
-  } else if (hasMutations) {
-    return "Mutation";
+  let result = "";
+
+  if (hasQueries) {
+    result = "Query";
   }
+  if (hasMutations) {
+    result += `${hasQueries ? ", " : ""}Mutation`;
+  }
+  if (hasSuscriptions) {
+    result += `${hasQueries || hasMutations ? ", " : ""}Subscription`;
+  }
+
+  return result;
 };
 
 /**
  * Returns the types used to parameterize the react-apollo components
  * @param {The query or mutation operation name} name
- * @param {Query or Mutation} type
+ * @param {Query, Mutation or Subscription} type
  * @param {Boolean whether the operation takes in variables or not} hasVars
  */
 const getTypeImports = ({ operations }) => {

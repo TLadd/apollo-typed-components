@@ -7,8 +7,8 @@ const {
 
 /**
  * Wraps the apollo class Query or Mutation to pass the corresponding query DocumentNode
- * @param {The query or mutation operation name} name
- * @param {Query or Mutation} type
+ * @param {The query, mutation or subscription operation name} name
+ * @param {Query, Mutation or Subscription} type
  */
 const operationComponentTemplate = ({ name, type }) => {
   const className = `${name}${type}Class`;
