@@ -74,6 +74,12 @@ const generateCompsFromParsedQueryFile = (
           name: def.name.value,
           hasVars: Boolean(def.variableDefinitions.length)
         };
+      } else if (def.operation === "subscription") {
+        return {
+          type: "Subscription",
+          name: def.name.value,
+          hasVars: Boolean(def.variableDefinitions.length)
+        };
       } else {
         return null;
       }

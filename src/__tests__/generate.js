@@ -24,7 +24,13 @@ mutation DeleteItem($input: DeleteItemInput!) {
   deleteItem(input: $input) {
     success
   }
-}        
+}
+
+subscription OnDeleteItem($input: String!) {
+  itemDeleted(input: $input) {
+    id
+  }
+}
 `;
 
 const bcQueries = `
@@ -45,7 +51,15 @@ mutation UpdateRecord($input: UpdateRecordInput!) {
       ...IdNameFrage
     }
   }
-} 
+}
+
+subscription OnUpdatedRecord($input: String!) {
+  recordUpdated(input: $input) {
+    record {
+      ...IdNameFrage
+    }
+  }
+}
 `;
 
 const dQueries = `
