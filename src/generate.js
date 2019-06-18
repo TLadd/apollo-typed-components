@@ -2,7 +2,7 @@ const fs = require("fs");
 const glob = require("glob");
 const gql = require("graphql-tag").default;
 const async = require("async");
-const { flowTemplate, typescriptTemplate } = require("./templates");
+const { typescriptTemplate } = require("./templates");
 
 /**
  * Find every queries.graphql file and generate a corresponding components file next to it
@@ -50,7 +50,7 @@ const generate = (options, callback) => {
  * based on the parsedData input
  * @param {queries.graphql filename} filename
  * @param {graphql AST output from gql} parsedData
- * @param {flow or typescript} target
+ * @param {typescript} target
  */
 const generateCompsFromParsedQueryFile = (
   { filename, parsedData, target },
@@ -93,9 +93,6 @@ const generateCompsFromParsedQueryFile = (
 
   let outputFileText;
   switch (target) {
-    case "flow":
-      outputFileText = flowTemplate({ operations });
-      break;
     case "typescript":
       outputFileText = typescriptTemplate({ operations });
       break;
@@ -110,9 +107,6 @@ const generateCompsFromParsedQueryFile = (
 
   let fileExtension;
   switch (target) {
-    case "flow":
-      fileExtension = "js";
-      break;
     case "typescript":
       fileExtension = "tsx";
       break;

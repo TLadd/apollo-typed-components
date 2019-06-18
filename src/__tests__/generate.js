@@ -91,71 +91,6 @@ describe("generate", () => {
     jest.resetAllMocks();
   });
 
-  it("generates expected output for flow", done => {
-    glob.mockImplementationOnce((path, options, callback) => {
-      callback(null, [
-        "src/a/queries.graphql",
-        "src/b/c/queries.graphql",
-        "d/queries.graphql",
-        "e/queries.graphql",
-        "f/queries.graphql"
-      ]);
-    });
-
-    fs.readFile.mockImplementation((path, options, callback) => {
-      callback(
-        null,
-        {
-          "src/a/queries.graphql": aQueries,
-          "src/b/c/queries.graphql": bcQueries,
-          "d/queries.graphql": dQueries,
-          "e/queries.graphql": eQueries,
-          "f/queries.graphql": fQueries
-        }[path]
-      );
-    });
-
-    fs.writeFile.mockImplementation((filename, fileText, callback) => {
-      callback(null);
-    });
-
-    jest.spyOn(global.console, "warn").mockImplementation(() => {});
-
-    generate({ target: "flow" }, error => {
-      expect(fs.writeFile.mock.calls).toHaveLength(4);
-      expect(global.console.warn).toHaveBeenCalledWith(
-        "No queries or mutations found in e/queries.graphql"
-      );
-
-      const aCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "src/a/ApolloComps.js"
-      );
-      const bcCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "src/b/c/ApolloComps.js"
-      );
-      const dCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "d/ApolloComps.js"
-      );
-      const fCall = fs.writeFile.mock.calls.find(
-        call => call[0] === "f/ApolloComps.js"
-      );
-
-      expect(error).toBeNull();
-      expect(aCall[1]).toMatchSnapshot(
-        "Generates a file with GetList query and DeleteItem mutation"
-      );
-      expect(bcCall[1]).toMatchSnapshot(
-        "Generates a file with GetRecord query and UpdateRecord mutation"
-      );
-      expect(dCall[1]).toMatchSnapshot("Generates a file with GetViewer query");
-      expect(fCall[1]).toMatchSnapshot(
-        "Generates a file with DeleteRecord mutation"
-      );
-
-      done();
-    });
-  });
-
   it("generates expected output for typescript", done => {
     glob.mockImplementationOnce((path, options, callback) => {
       callback(null, [
@@ -260,7 +195,7 @@ describe("generate", () => {
       callback("writeFile failed");
     });
 
-    generate({ target: "flow" }, error => {
+    generate({ target: "typescript" }, error => {
       expect(error).toBe("writeFile failed");
       done();
     });
