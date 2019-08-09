@@ -1,6 +1,6 @@
 {
   "name": "apollo-typed-components",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Using typescript or flow types from the apollo-cli generate command, generate typed react-apollo Query and Mutation components",
   "bin": "./src/index.js",
   "author": "Thomas Ladd",
