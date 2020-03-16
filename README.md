@@ -1,3 +1,7 @@
+# Deprecated
+
+I recommend using https://github.com/dotansimha/graphql-code-generator
+
 # apollo-typed-components
 
 Command-line tool to generate ready-to-use [react-apollo](https://github.com/apollographql/react-apollo) flow typed Query and Mutation components. Utilizes type output from [apollo-cli](https://github.com/apollographql/apollo-cli)
